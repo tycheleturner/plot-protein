@@ -5,6 +5,8 @@ Plot Protein: Visualization of Mutations
 
 Author: Tychele N. Turner, Laboratory of Aravinda Chakravarti, Ph.D.
 
+Licenses: GNU General Public License version 3.0 (GPLv3), MIT License
+
 Short Description: Protein Plotting Script to Visualize Amino Acid Changes
 
 Programming Language: R
