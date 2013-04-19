@@ -32,4 +32,4 @@ R --slave --vanilla < plotProtein.R mutationFile proteinArchitectureFile postTra
 
 Example:
 
-R --slave --vanilla < scripts/plotProtein.R testFiles/psen1_mutation_file.txt testFiles/psen1_architecture_file.txt testFiles/psen1_post_translation_file.txt 463 Test
+R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test
