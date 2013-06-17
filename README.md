@@ -11,9 +11,9 @@ Short Description: Protein Plotting Script to Visualize Amino Acid Changes
 
 Programming Language: R
 
-Readme Date: 04/19/2013
+Readme Date: 06/15/2013
 
-Description: This script takes mutation information at the protein level and plots out the mutation above the schematic of the protein. It also plots the domains. 
+Description: This script takes mutation information at the protein level and plots out the mutation above the schematic of the protein. It also plots the domains. It now has additional features for specifying the tick size of the x-axis, capability to show labels, and also the option to zoom to a particular region of the protein. 
 
 NOTE: All files should be referring to the same isoform of the protein. This is imperative for drawing the plot correctly.
 
@@ -27,9 +27,12 @@ Required files:
 
 
 Usage:
+R --slave --vanilla < plotProtein.R mutationFile proteinArchitectureFile postTranslationalModificationFile proteinLength nameOfYourQuery tickSize showLabels zoomIn zoomStart zoomEnd
 
-R --slave --vanilla < plotProtein.R mutationFile proteinArchitectureFile postTranslationalModificationFile proteinLength nameOfYourQuery
+Example without zoom:
+R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 25 no no
 
-Example:
+Example with zoom:
+R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 25 no yes 25 50
 
-R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test
+
