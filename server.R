@@ -1,6 +1,16 @@
+#!/bin/R
+#Tychele N. Turner
+#Laboratory of Aravinda Chakravarti, Ph.D.
+#Johns Hopkins University School of Medicine
+#Protein Plotting Script for Shiny
+#Programming Language: R
+#Updated 06/15/2013
+
+#Description: This script is the server.R script for the Plot Protein Shiny Application
+
 library(shiny)
 
-# Define server logic for random distribution application
+# Define server 
 shinyServer(function(input, output) {
 
   output$plot <- renderPlot({
@@ -56,9 +66,12 @@ shinyServer(function(input, output) {
 		xlimRegion <- c(as.numeric(input$zoomStart), as.numeric(input$zoomEnd))
 }
 
-#	plot((1:as.numeric(input$proteinLength)), rep(-2, as.numeric(input$proteinLength)), type="l", lwd=5, main=paste("Amino Acid Changes in", " ", as.character(var[1,2]), " ", "(", as.character(var[1,1]), ")", sep=""), xlab="Amino Acid Position", ylab="", xlim=c(-145, as.numeric(input$proteinLength)), ylim=c(-1,-4), cex.lab=0.9, cex.main=1, yaxt="n")
+	plot((1:as.numeric(input$proteinLength)), rep(-2, as.numeric(input$proteinLength)), type="l", lwd=5, main=paste("Amino Acid Changes in", " ", as.character(var[1,2]), " ", "(", as.character(var[1,1]), ")", sep=""), xlab="Amino Acid Position", ylab="", xlim=xlimRegion, ylim=c(-1,-4), cex.lab=0.9, cex.main=1, yaxt="n", xaxt="n")
+	
+	ticks=seq(0,as.numeric(input$proteinLength), by=as.numeric(input$tickSize))
+	#Specify the ticks and grids you want	
+	axis(side = 1, at = ticks, las=3)
 
-	plot((1:as.numeric(input$proteinLength)), rep(-2, as.numeric(input$proteinLength)), type="l", lwd=5, main=paste("Amino Acid Changes in", " ", as.character(var[1,2]), " ", "(", as.character(var[1,1]), ")", sep=""), xlab="Amino Acid Position", ylab="", xlim=xlimRegion, ylim=c(-1,-4), cex.lab=0.9, cex.main=1, yaxt="n")
 
 	#Plot mutations
 	points(var[,3], rep(-2.5, length(var[,3])), pch=19, col="blue", cex=0.7)
@@ -66,7 +79,7 @@ shinyServer(function(input, output) {
 	#Label mutations
 	if (input$labels) {
 	for(i in 1:nrow(var)){
-		text(var[i,3], rep(-2.7, length(var[i,3])), paste(as.character(var[i,4]), as.character(var[i,3]), as.character(var[i,5]), sep=""), col="blue", cex=0.7, srt=90, adj = 0)
+		text(var[i,3], rep(-2.7, length(var[i,3])), paste(as.character(var[i,4]), as.character(var[i,3]), as.character(var[i,5]), sep=""), col="blue", cex=0.9, srt=90, adj = 0)
 	}
 }
 
@@ -82,9 +95,9 @@ shinyServer(function(input, output) {
 		rect(as.numeric(pa$start_site[i]), -2.05, as.numeric(pa$end_site[i]), -1.95, col="lightseagreen")
 	}
 	for(i in 1:length(pa$architecture_name)){
-		text(median(c(as.numeric(pa$start_site[i]), as.numeric(pa$end_site[i]))), -1.80, pa$architecture_name[i], cex=0.8)
+		text(median(c(as.numeric(pa$start_site[i]), as.numeric(pa$end_site[i]))), -1.80, pa$architecture_name[i], cex=1)
 	}
-	legend("topright", c("Protein Domain", "Post-Translational Modification"), fill=c("lightseagreen", "deeppink"), cex=0.8)
+	legend("topright", c("Protein Domain", "Post-Translational Modification"), fill=c("lightseagreen", "deeppink"), cex=1)
 	#dev.off()
 
 
@@ -162,10 +175,6 @@ shinyServer(function(input, output) {
 		}
 	}
 
-#	write.table(var, file=paste(var$geneName[1], "_annotated_architecture_and_post_translational_modifications.txt", sep=""), sep="\t", quote=F, row.names=F)
-#	write.table(table(var$domain), file=paste(var$geneName[1], "_domain_counts.txt", sep=""), sep="\t", quote=F, row.names=F, col.names=F)
-#	write.table(table(var$postTranslationSite), file=paste(var$geneName[1], "_post_translational_modification_counts.txt", sep=""), sep="\t", quote=F, row.names=F, col.names=F)
-	
 	data.frame(var)
 	  
   }) # end of filetable 
