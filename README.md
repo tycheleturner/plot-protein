@@ -36,6 +36,5 @@ R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_f
 
 Example with zoom:
 
-R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 25 no yes 25 50
-
+R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 1 no yes 25 45
 
