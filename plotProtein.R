@@ -53,9 +53,24 @@ pt <- read.table(postTranslationalModificationFile, sep="\t", header=TRUE)
 #x is the input data, y is rpt, z is rpa from HPRD
 pdf(paste(as.character(var[1,2]), "_protein_plot.pdf", sep=""), height=7.5, width=10)
 #par(oma=c(8, 1.2, 8, 1.2))
+layout(matrix(c(1,2),nrow=1), widths=c(1,3))
 par(oma=c(4, 0, 4, 0), mar=c(5, 0, 4, 0) + 0.4)
 
-xlimRegion <- c(-145, as.numeric(proteinLength))
+#stable legend
+plot((-30:-15), rep(-1, 16), col="white", type="l", ann=FALSE, bty="n", xaxt="n", yaxt="n", xlim=c(-160, -15), ylim=c(1,-5.5))
+	
+#query text
+text(-100,-2.5,nameOfYourQuery, col="blue", cex=0.9, font=2)
+
+xlimRegion <- c(0, proteinLength)
+	if(zoomIn == "yes") {
+          xlimRegion <- c(as.numeric(zoomStart), as.numeric(zoomEnd))
+	}
+
+
+
+
+xlimRegion <- c(0, as.numeric(proteinLength))
 	if(zoomIn == "yes") {
           xlimRegion <- c(as.numeric(zoomStart), as.numeric(zoomEnd))
 	}
@@ -76,7 +91,6 @@ ticks=seq(0,as.numeric(proteinLength), by=tickSize)
 axis(side = 1, at = ticks, las=3)
 
 #labels
-text(-100,-2.5,nameOfYourQuery, col="blue", cex=1)
 for(i in 1:length(pt$site)){
 	segments(as.numeric(pt$site[i]), -2, as.numeric(pt$site[i]), -2.25, lwd=2, col="black")
 	points(as.numeric(pt$site[i]), -2.25, pch=19, col="deeppink", cex=0.7)
