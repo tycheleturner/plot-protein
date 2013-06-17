@@ -27,12 +27,15 @@ Required files:
 
 
 Usage:
+
 R --slave --vanilla < plotProtein.R mutationFile proteinArchitectureFile postTranslationalModificationFile proteinLength nameOfYourQuery tickSize showLabels zoomIn zoomStart zoomEnd
 
 Example without zoom:
+
 R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 25 no no
 
 Example with zoom:
+
 R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 25 no yes 25 50
 
 
