@@ -4,43 +4,50 @@
 #Johns Hopkins University School of Medicine
 #Protein Plotting Script
 #Programming Language: R
-#Updated 06/15/2013
+#Updated 05/25/2015
 
 #Description: This script takes mutation information at the protein level and plots out the mutation above the schematic of the protein. It also plots the domains. 
 
 #NOTE: All files should be referring to the same isoform of the protein. This is imperative for drawing the plot correctly.
 
-#Required files:
-##Mutation file: tab-delimited file containing 5 columns (ProteinId, GeneName, ProteinPositionOfMutation, ReferenceAminoAcid, AlternateAminoAcid) NO HEADER FOR NEEDED FOR THIS FILE
-##Protein architecture file: tab-delimited file containing 3 columns (architecture_name, start_site, end_site). This file NEEDS the header and it is the same as what was previously written. This information can be downloaded from the HPRD (http://hprd.org/). Although the most recent files are quite old so looking in the web browser you can get much more up to date information.
-##Post-translational modification file: This is a tab-delimited file with only one column and that is the site. This file NEEDS a header and is as previously written.
-
 #Usage:
-## R --slave --vanilla < plotProtein.R mutationFile proteinArchitectureFile postTranslationalModificationFile proteinLength nameOfYourQuery tickSize showLabels zoomIn zoomStart zoomEnd
+##Basic
+###Rscript plotProtein.R -m psen1_mutation_file.txt -a psen1_architecture_file.txt -p psen1_post_translation_file.txt -l 463
 
-#without zoom
-## R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 25 no no
+##Advanced
+###Rscript plotProtein.R -m psen1_mutation_file.txt -a psen1_architecture_file.txt -p psen1_post_translation_file.txt -l 464 -n Disease -t 25 -s yes -z yes -b 50 -c 100
 
-#with zoom
-## R --slave --vanilla < plotProtein.R psen1_mutation_file.txt psen1_architecture_file.txt psen1_post_translation_file.txt 463 Test 25 no yes 25 50
+#will have to run the install for optparse if never installed before
+#install.packages("optparse")
 
-#Arguments:
-argv <- function(x){
-    args <- commandArgs()
-    return(args[x])
-}
+library("optparse")
 
-mutationFile <- argv(4) #This is the mutation file
-proteinArchitectureFile <- argv(5) #This is the protein architecture file
-postTranslationalModificationFile <- argv(6) #This is the post-translation modification file
-proteinLength <- argv(7) #Length of the protein isoform your looking at
-nameOfYourQuery <- argv(8) #Here you can put whatever name you want to show up in the plot
-tickSize <- as.numeric(argv(9)) #Specify the tick spacing for x-axis
-showLabels <- argv(10) #yes/no
-zoomIn <- argv(11) #yes/no
+option_list <- list(
+    make_option(c('-m', '--mutations'), action='store', type='character', default='mutationFile.txt', help='This is the mutation file. It should be a tab-delimited file containing 5 columns (ProteinId, GeneName, ProteinPositionOfMutation, ReferenceAminoAcid, AlternateAminoAcid) NO HEADER FOR NEEDED FOR THIS FILE. (REQUIRED)'),
+    make_option(c('-a', '--architecture'), action='store', type='character', default='architectureFile.txt', help='This is the protein architecture file. It should be a tab-delimited file containing 3 columns (architecture_name, start_site, end_site). This file NEEDS the header and it is the same as what was previously written. This information can be downloaded from the HPRD (http://hprd.org/). Although the most recent files are quite old so looking in the web browser you can get much more up to date information. (REQUIRED)'),
+    make_option(c('-p', '--posttranslational'), action='store', type='character', default='posttranslationalFile.txt', help='This is the protein post-translational modification file. This is a tab-delimited file with only one column and that is the site. This file NEEDS a header and is as previously written (site). (REQUIRED)'),
+    make_option(c('-l', '--length'), action='store', type='numeric', default=100, help='protein length (REQUIRED)'),
+    make_option(c('-n', '--name'), action='store', type='character', default='Test', help='Name of your query. Default is Test'),
+    make_option(c('-t', '--ticksize'), action='store', type='numeric', default=10, help='Size of ticks on x-axis. Default is 10'),
+    make_option(c('-s', '--showlabels'), action='store', type='character', default='no', help='Option to show labels. Default is no'),
+    make_option(c('-z', '--zoom'), action='store', type='character', default='no', help='Option to zoom in. Default is no'),
+    make_option(c('-b', '--zoomstart'), action='store', type='numeric', default=1, help='Starting number for zoom in. Use if zoom option is set to yes. Default is 1'),
+    make_option(c('-c', '--zoomend'), action='store', type='numeric', default=10, help='Ending number for zoom in. Use if zoom option is set to yes. Default is 10')
+)
+opt <- parse_args(OptionParser(option_list = option_list))
+
+set = opt$set #global quality threshold (can vary)
+mutationFile <- opt$mutations
+proteinArchitectureFile <- opt$architecture
+postTranslationalModificationFile <- opt$posttranslational
+proteinLength <- opt$length
+nameOfYourQuery <- opt$name
+tickSize <- opt$ticksize
+showLabels <- opt$showlabels
+zoomIn <- opt$zoom
 if(zoomIn == "yes"){
-	zoomStart <- as.numeric(argv(12))
-	zoomEnd <- as.numeric(argv(13))
+	zoomStart <- opt$zoomstart
+	zoomEnd <- opt$zoomend
 }
 
 ####################ANALYSIS####################
