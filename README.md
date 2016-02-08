@@ -30,8 +30,12 @@ Required files:
 
 Basic Usage:
 ==================================================
+```
 Rscript plotProtein.R -m psen1_mutation_file.txt -a psen1_architecture_file.txt -p psen1_post_translation_file.txt -l 463
+```
 
 Advanced usage:
 ==================================================
+```
 Rscript plotProtein.R -m psen1_mutation_file.txt -a psen1_architecture_file.txt -p psen1_post_translation_file.txt -l 464 -n Disease -t 25 -s yes -z yes -b 50 -c 100
+```
