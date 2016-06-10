@@ -1,4 +1,7 @@
-#CRLMM pipeline
+#High Throughput Plot Protein Pipeline
+#Tychele Turner, Ph.D.
+#June 9, 2016
+
 import os
 
 #configuration
