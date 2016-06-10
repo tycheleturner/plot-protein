@@ -1,10 +1,8 @@
 #!/bin/R
 #Tychele N. Turner
-#Laboratory of Aravinda Chakravarti, Ph.D.
-#Johns Hopkins University School of Medicine
-#Protein Plotting Script
+#Protein Plotting Script for Snakefile
 #Programming Language: R
-#Updated 05/25/2015
+#Updated 06/09/2016
 
 #Description: This script takes mutation information at the protein level and plots out the mutation above the schematic of the protein. It also plots the domains. 
 
