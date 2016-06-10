@@ -59,7 +59,7 @@ rule plot_protein:
         grep {params.prefix} {PROTEIN_LENGTH} | awk '{{FS="\\t"; print $2}}' > {params.prefix}_length.txt
 
         #run plot
-        Rscript /net/eichler/vol4/home/tychele/github/plot-protein/high_throughput/ht_plot_protein.R -m {params.prefix}_mutation.txt -a {params.prefix}_architecture.txt -p {params.prefix}_PT.txt -l {params.prefix}_length.txt -t 25 -n {params.prefix} -s yes
+        Rscript ht_plot_protein.R -m {params.prefix}_mutation.txt -a {params.prefix}_architecture.txt -p {params.prefix}_PT.txt -l {params.prefix}_length.txt -t 25 -n {params.prefix} -s yes
 
         rm {params.prefix}_mutation.txt
         rm {params.prefix}_architecture.txt
