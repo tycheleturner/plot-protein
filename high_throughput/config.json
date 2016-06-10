@@ -1,0 +1,7 @@
+{
+  "proteins_to_plot": "./proteins_to_plot.txt",
+  "mutation_file": "./mutations.txt",
+  "domain_file": "./PROTEIN_ARCHITECTURE.txt",
+  "post_translational_modification_file": "./POST_TRANSLATIONAL_MODIFICATIONS.txt",
+  "protein_length": "./protein.length.txt"
+}
