@@ -29,20 +29,21 @@ rule plot_protein:
         output: "{protein}_finished.txt"
         params: prefix="{protein}", sge_opts="-l mfree=500M,h_rt=24:00:00 -N plot_protein -cwd"
         shell: """
+        set +e
 	module load modules modules-init modules-gs
 	module load R/3.0.0
 
         #mutations
-        grep {params.prefix} {input} | awk '{{FS="\t"; print $2"\t"$1"\t"$4"\t""R""\t""A"}}' > {params.prefix}_mutation.txt
+        grep {params.prefix} {input} | awk '{{FS="\\t"; print $2"\\t"$1"\\t"$4"\\t""R""\\t""A"}}' > {params.prefix}_mutation.txt
 
         #architecture
-        grep {params.prefix} {DOMAIN}  | awk '{{FS="\t" ; print $5"\t"$7"\t"$8}}' > {params.prefix}_architecture.txt
+        grep {params.prefix} {DOMAIN}  | awk '{{FS="\\t" ; print $5"\\t"$7"\\t"$8}}' > {params.prefix}_architecture.txt
 
         if [ -s {params.prefix}_architecture.txt ]; then
             echo "The domain file has data"
         else
             echo "The domain file is empty"
-            echo -e 'PSN\t-1002\t-1001' > {params.prefix}_architecture.txt
+            echo -e 'PSN\\t-1002\\t-1001' > {params.prefix}_architecture.txt
         fi
 
         #pt modification
@@ -55,7 +56,7 @@ rule plot_protein:
         fi
 
         #protein length
-        grep {params.prefix} {PROTEIN_LENGTH} | awk '{{FS="\t"; print $2}}' > {params.prefix}_length.txt
+        grep {params.prefix} {PROTEIN_LENGTH} | awk '{{FS="\\t"; print $2}}' > {params.prefix}_length.txt
 
         #run plot
         Rscript /net/eichler/vol4/home/tychele/github/plot-protein/high_throughput/ht_plot_protein.R -m {params.prefix}_mutation.txt -a {params.prefix}_architecture.txt -p {params.prefix}_PT.txt -l {params.prefix}_length.txt -t 25 -n {params.prefix} -s yes
