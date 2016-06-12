@@ -46,16 +46,15 @@ Running high throughput Plot Protein using snakemake:
 Need to have the mutation file formatted as follows:
 
 ```
-    Column 1: GENE_HUGO_ID Used as a column placeholder in CLUMP scripts (Can use NA if unavailable)
+    Column 1: GENE_HUGO_ID (Can use NA if unavailable)
     Column 2: PROTEIN_ID Required: Must match Protein Ids provided in the protein length file
-    Column 3: STUDY_NAME Used as a column placeholder in CLUMP scripts (Can use NA if unavailable)
+    Column 3: STUDY_NAME (Can use NA if unavailable)
     Column 4: AMINO_ACID_POSITION Required: Amino Acid position of the variant
-    Column 5: CHROM Used as a column placeholder in CLUMP scripts (Can use NA if unavailable)
-    Column 6: POSITION Used as a column placeholder in CLUMP scripts (Can use NA if unavailable)
-    Column 7: REF Allele Used as a column placeholder in CLUMP scripts (Can use NA if unavailable)
-    Column 8: ALT Allele Used as a column placeholder in CLUMP scripts (Can use NA if unavailable)
-    Column 9: ALLELE_FREQUENCY Optional column. Allele Frequency is treated as 0 if not provided
-    Column 10:DOMAIN Optional colum
+    Column 5: CHROM (Can use NA if unavailable)
+    Column 6: POSITION (Can use NA if unavailable)
+    Column 7: REF Allele (Can use NA if unavailable)
+    Column 8: ALT Allele (Can use NA if unavailable)
+    Column 9: ALLELE_FREQUENCY Optional column. (Can use NA if unavailable) 
 ```
 
  * Generate the list of proteins to plot: 
