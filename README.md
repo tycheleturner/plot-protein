@@ -3,7 +3,7 @@ plot-protein
 
 Plot Protein: Visualization of Mutations
 
-Author: Tychele N. Turner, Laboratory of Aravinda Chakravarti, Ph.D.
+Author: Tychele N. Turner, Ph.D.
 
 Licenses: GNU General Public License version 3.0 (GPLv3), MIT License
 
@@ -11,9 +11,9 @@ Short Description: Protein Plotting Script to Visualize Amino Acid Changes
 
 Programming Language: R
 
-Current version: 2.0.0
+Current version: 3.0.0
 
-Readme Date: 05/25/2015
+Readme Date: 06/11/2016
 
 Description: This script takes mutation information at the protein level and plots out the mutation above the schematic of the protein. It also plots the domains. It now has additional features for specifying the tick size of the x-axis, capability to show labels, and also the option to zoom to a particular region of the protein. 
 
@@ -42,6 +42,7 @@ Rscript plotProtein.R -m psen1_mutation_file.txt -a psen1_architecture_file.txt 
 
 Running high throughput Plot Protein using snakemake:
 ==================================================
+The set of instructions and input files for this section are different than that shown above. 
 
 Need to have the mutation file formatted as follows:
 
