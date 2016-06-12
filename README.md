@@ -75,8 +75,8 @@ cd plot-protein/high_throughput/
 
  * Fill out the config file. You'll need a post-translational modification file and a domain file. These can be downloaded from HPRD or you could make your own. Required information is shown below.
 
-** Post translational modification file has a column 4 with the protein id matching that of the mutation file and column 5 is the site.
-** Domain file has a column 3 with the protein id matching that of the mutation file, column 5 with the domain name, column 7 is the starting amino acid of the domain, and column 8 is the ending amino acid of the domain
+	* Post translational modification file has a column 4 with the protein id matching that of the mutation file and column 5 is the site.
+	* Domain file has a column 3 with the protein id matching that of the mutation file, column 5 with the domain name, column 7 is the starting amino acid of the domain, and column 8 is the ending amino acid of the domain
 
  * Run the snakemake either locally OR by submitting to the cluster. Examples of both are shown below. ===
 
