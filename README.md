@@ -23,7 +23,7 @@ Required files:
 
 * **Mutation file**: tab-delimited file containing 5 columns (ProteinId, GeneName, ProteinPositionOfMutation, ReferenceAminoAcid, AlternateAminoAcid) NO HEADER FOR NEEDED FOR THIS FILE
 
-* **Protein architecture file**: tab-delimited file containing 3 columns (architecture_name, start_site, end_site). This file NEEDS the header and it is the same as what was previously written. This information can be downloaded from the HPRD (http://hprd.org/). 
+* **Protein architecture file**: tab-delimited file containing 3 columns (architecture_name, start_site, end_site). This file NEEDS the header and it is the same as what was previously written. 
 
 * **Post-translational modification file**: This is a tab-delimited file with only one column and that is the site. This file NEEDS a header and is as previously written.
 
