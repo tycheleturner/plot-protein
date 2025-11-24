@@ -17,6 +17,9 @@
 **Description**: This script takes mutation information at the protein level and plots out the mutation above the schematic of the protein. It also plots the domains. It now has additional features for specifying the tick size of the x-axis, capability to show labels, and also the option to zoom to a particular region of the protein. 
 
 > [!NOTE]
+> Please cite this paper if using this tool: Turner T. Plot protein: visualization of mutations. J Clin Bioinforma. 2013 Jul 22;3(1):14. doi: 10.1186/2043-9113-3-14. PMID: 23876180; PMCID: PMC3724591.
+
+> [!NOTE]
 > All files should be referring to the same isoform of the protein. This is imperative for drawing the plot correctly.
 
 Required files:
