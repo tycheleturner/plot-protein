@@ -1,5 +1,5 @@
-plot-protein
-============
+## plot-protein
+
 
 Plot Protein: Visualization of Mutations
 
@@ -13,7 +13,7 @@ Programming Language: R
 
 Current version: 3.0.0
 
-Readme Date: 06/11/2016
+Readme Date: 11/23/2025
 
 Description: This script takes mutation information at the protein level and plots out the mutation above the schematic of the protein. It also plots the domains. It now has additional features for specifying the tick size of the x-axis, capability to show labels, and also the option to zoom to a particular region of the protein. 
 
@@ -28,22 +28,23 @@ Required files:
 * Post-translational modification file: This is a tab-delimited file with only one column and that is the site. This file NEEDS a header and is as previously written.
 
 
-Basic Usage:
-==================================================
+### Basic Usage:
+
 ```
 Rscript plotProtein.R -m psen1_mutation_file.txt -a psen1_architecture_file.txt -p psen1_post_translation_file.txt -l 463
 ```
 
-Advanced usage:
-==================================================
+### Advanced usage:
 ```
 Rscript plotProtein.R -m psen1_mutation_file.txt -a psen1_architecture_file.txt -p psen1_post_translation_file.txt -l 464 -n Disease -t 25 -s yes -z yes -b 50 -c 100
 ```
 
 
-==================================================
-Running high throughput Plot Protein using snakemake:
-==================================================
+---
+
+### Running high throughput Plot Protein using snakemake:
+
+---
 The set of instructions and input files for this section are different than that shown above. 
 
 Need to have the mutation file formatted as follows:
@@ -91,4 +92,3 @@ Submitting to cluster
 ```
 snakemake --cluster 'qsub {params.sge_opts}' -j 100 -w 30 -k
 ```
-
