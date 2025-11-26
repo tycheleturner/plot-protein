@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plot-protein"
+version = "4.0.0"
+description = "Protein mutation/domain/PTM plotting utility"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.8"
+
+authors = [
+  { name = "Tychele Turner", email = "tycheleturner@gmail.com" }
+]
+
+dependencies = [
+  "numpy>=1.21",
+  "pandas>=1.3",
+  "matplotlib>=3.4"
+]
+
+[project.scripts]
+plot-protein = "plot_protein.cli:main"
+
