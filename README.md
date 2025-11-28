@@ -19,6 +19,8 @@ Plot Protein visualizes amino acid changes along a protein, drawing variants abo
 > [!NOTE]
 > Please cite this paper if using this tool: Turner T. Plot protein: visualization of mutations. J Clin Bioinforma. 2013 Jul 22;3(1):14. doi: 10.1186/2043-9113-3-14. PMID: 23876180; PMCID: PMC3724591.
 
+## Check out the ![gallery](gallery/Gallery.md)
+
 ## Input formats
 
 These formats are used across implementations.
