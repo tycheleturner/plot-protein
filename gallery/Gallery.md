@@ -8,7 +8,6 @@ plot-protein \
 --architecture pten_architecture.txt \
 --format png \
 --output PTEN_standard.png \
---color-by score
 ```
 ![plot](PTEN_standard.png)
 
@@ -20,7 +19,6 @@ plot-protein \
 --architecture pten_architecture.txt \
 --format png \
 --output PTEN_standard_dark.png \
---color-by score \
 --theme dark
 ```
 ![plot](PTEN_standard_dark.png)
