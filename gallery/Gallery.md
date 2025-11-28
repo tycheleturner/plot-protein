@@ -7,7 +7,7 @@ plot-protein \
 -l 403 \
 --architecture pten_architecture.txt \
 --format png \
---output PTEN_standard.png \
+--output PTEN_standard.png
 ```
 ![plot](PTEN_standard.png)
 
