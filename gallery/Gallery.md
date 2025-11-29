@@ -35,6 +35,21 @@ plot-protein \
 ```
 ![plot](PTEN_standard_score.png)
 
+### standard (small point size) and includes ptms
+```
+plot-protein \
+--mutations example_variants/PTEN_denovodb_version1.8_function.txt \
+--mutations-name "Function" \
+-l 403 \
+--architecture pten_architecture.txt \
+--format png \
+--point-size 5  \
+--jitter off \
+--posttranslational pten_ptm.txt \
+--output PTEN_standard_5_point.png
+```
+![plot](PTEN_standard_5_point.png)
+
 ### standard (filter to keep only variants with score greater than 30)
 ```
 plot-protein \
@@ -211,3 +226,40 @@ plot-protein \
 --output PTEN_domain_function_and_pheno.png
 ```
 ![plot](PTEN_domain_function_and_pheno.png)
+
+### zoom example to specific location
+```
+plot-protein \
+--mutations example_variants/PTEN_denovodb_version1.8_function.txt \
+--mutations-name "Function" \
+-l 403 \
+--mutations_bottom example_variants/PTEN_denovodb_version1.8_phenotype.txt \
+--mutations-bottom-name "Phenotype"  \
+--architecture pten_architecture.txt \
+--format png \
+--jitter off \
+--zoom yes \
+--zoomstart 120 \
+--zoomend 145 \
+--output PTEN_zoom_example.png
+```
+![plot](PTEN_zoom_example.png)
+
+### another zoom example to specific location
+```
+plot-protein \
+--mutations example_variants/PTEN_denovodb_version1.8_function.txt \
+--mutations-name "Function" \
+-l 403 \
+--mutations_bottom example_variants/PTEN_denovodb_version1.8_phenotype.txt \
+--mutations-bottom-name "Phenotype"  \
+--architecture pten_architecture.txt \
+--format png \
+--jitter off \
+--posttranslational pten_ptm.txt \
+--zoom yes \
+--zoomstart 320 \
+--zoomend 350 \
+--output PTEN_zoom_example2.png
+```
+![plot](PTEN_zoom_example2.png)
